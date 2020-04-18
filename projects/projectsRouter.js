@@ -1,5 +1,6 @@
 const express = require('express');
 const projects = require("../data/helpers/projectModel");
+const actions = require("../data/helpers/actionModel")
 
 
 const router = express.Router();
@@ -62,19 +63,6 @@ router.post('/', (req, res) => {
 			next(error)
 		})
 });
-
-// ///// Create project Post /////
-
-// router.post('/:id/posts', validateProjectId(), validatePost(), (req, res) => {
-
-// 	posts.insert({ ...req.body, project_id: req.params.id })
-// 		.then((post) => {
-// 			res.status(201).json(post)
-// 		})
-// 		.catch((error) => {
-// 			next(error)
-// 		})
-// });
 
 
 // //////////////// PUT ////////////////

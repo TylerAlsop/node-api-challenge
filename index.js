@@ -30,7 +30,7 @@ server.use(logger({ format: "medium" }));
 
 server.use("/", welcomeRouter)
 server.use("/projects", projectsRouter)
-server.use("/actions", actionsRouter)
+server.use("/projects/:id/actions", actionsRouter)
 
 server.use((req, res) => {
     res

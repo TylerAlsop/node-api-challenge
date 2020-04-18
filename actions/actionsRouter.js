@@ -20,7 +20,21 @@ router.get('/', (req, res) => {
 		})
 });
 
+// //////////////// GET by ID ////////////////
 // router.get('/:id', (req, res) => {
-// 	res.status(200).json(req.project)
+// 	res.status(200).json(req.action)
 // });
+
+
+//////////////// POST ////////////////
+
+router.post('/', (req, res) => {
+	actions.insert({ ...req.body, project_id: req.params.id })
+		.then((post) => {
+			res.status(201).json(post)
+		})
+		.catch((error) => {
+			next(error)
+		})
+});
 
