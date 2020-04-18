@@ -19,33 +19,49 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-	res.status(200).json(req.project)
+    const { id } = req.params;
+
+    projects.get(id)
+        .then(project => {
+            if (id) {
+                res.status(200).json(project)
+            } else {
+                res.status(404).json({
+                    message: "The project with that ID could not be found."
+                })
+            }
+        })
+        .catch((error) => {
+            next(error)
+        })
 });
 
-// router.get('/:id/posts', validateProjectId(), (req, res) => {
-//   projects.getprojectPosts(req.params.id)
-//     .then((posts) => {
-//       res
-//         .status(200)
-//         .json(posts)
-//     })
-//     .catch((error) => {
-// 			next(error)
-// 		})
-// });
+router.get('/:id/actions', (req, res) => {
+    const { id } = req.params;
+    
+    projects.getProjectActions(id)
+        .then((posts) => {
+        res
+            .status(200)
+            .json(posts)
+        })
+        .catch((error) => {
+                next(error)
+            })
+});
 
 
-// //////////////// POST ////////////////
+//////////////// POST ////////////////
 
-// router.post('/', validateProject(), (req, res) => {
-//   projects.insert(req.body)
-//     .then((project) => {
-//       res.status(201).json(project)
-//     })
-//     .catch((error) => {
-// 			next(error)
-// 		})
-// });
+router.post('/', (req, res) => {
+  projects.insert(req.body)
+    .then((project) => {
+      res.status(201).json(project)
+    })
+    .catch((error) => {
+			next(error)
+		})
+});
 
 // ///// Create project Post /////
 
