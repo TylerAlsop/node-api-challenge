@@ -11,7 +11,7 @@ const logger =  require("./middleware/logger");
 
 const welcomeRouter = require("./welcome/welcomeRouter")
 const projectsRouter = require("./projects/projectsRouter")
-// const actionsRouter = require("./actions/actions")
+const actionsRouter = require("./actions/actionsRouter")
 
 
 //////// Server / Port ////////
@@ -30,7 +30,7 @@ server.use(logger({ format: "medium" }));
 
 server.use("/", welcomeRouter)
 server.use("/projects", projectsRouter)
-// server.use("/projects/:id/actions", actionsRouter)
+server.use("/actions", actionsRouter)
 
 server.use((req, res) => {
     res
