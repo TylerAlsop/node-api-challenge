@@ -6,7 +6,7 @@ const router = express.Router();
 module.exports = router;
 
 
-//////// This handles routes starting with "localhost:3456/actions"  ////////
+//////// This handles routes starting with "localhost:3456/projects/:id/actions"  ////////
 
 //////////////// GET ////////////////
 
