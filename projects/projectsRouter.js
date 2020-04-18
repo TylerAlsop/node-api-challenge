@@ -37,6 +37,7 @@ router.get('/:id', (req, res) => {
         })
 });
 
+////// GET project's actions //////
 router.get('/:id/actions', (req, res) => {
     const { id } = req.params;
     
