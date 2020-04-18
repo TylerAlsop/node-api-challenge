@@ -70,4 +70,4 @@ router.delete('/:id', (req, res) => {
 		.catch((error) => {
 			next(error)
 		})
-})
+});
