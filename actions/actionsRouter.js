@@ -46,3 +46,14 @@ router.post('/', (req, res) => {
 		})
 });
 
+//////////////// PUT ////////////////
+
+router.put('/:id', (req, res) => {
+	actions.update(req.params.id, req.body)
+	.then((action) => {
+	  res.status(200).json(action)
+	})
+	.catch((error) => {
+	  next(error)
+	})
+  });
