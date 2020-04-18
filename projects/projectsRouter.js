@@ -77,25 +77,25 @@ router.put('/:id', (req, res) => {
   })
 });
 
-// //////////////// DELETE ////////////////
+//////////////// DELETE ////////////////
 
-// router.delete('/:id', (req, res) => {
-//   projects.remove(req.params.id)
-//   .then((count) => {
-//     if (count > 0) {
-//       res.status(200).json({
-//         message: "The project you have selected has been deleted.",
-//       })
-//     } else {
-//       res.status(404).json({
-//         message: "The project you selected could not be found",
-//       })
-//     }
-//   })
-//   .catch((error) => {
-//     next(error)
-//   })
-// });
+router.delete('/:id', (req, res) => {
+  projects.remove(req.params.id)
+  .then((count) => {
+    if (count > 0) {
+      res.status(200).json({
+        message: "The project you have selected has been deleted.",
+      })
+    } else {
+      res.status(404).json({
+        message: "The project you selected could not be found.",
+      })
+    }
+  })
+  .catch((error) => {
+    next(error)
+  })
+});
 
 
 // //////////////// Custom Middleware ////////////////
