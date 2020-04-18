@@ -35,25 +35,39 @@ router.get('/:id', (req, res) => {
 
 
 //////////////// POST ////////////////
-
-router.post('/', (req, res) => {
-	actions.insert({ ...req.body, project_id: req.params.id })
-		.then((post) => {
-			res.status(201).json(post)
-		})
-		.catch((error) => {
-			next(error)
-		})
-});
+/* 
+This can be found under the POST req in projectsRouter.js
+*/
 
 //////////////// PUT ////////////////
 
 router.put('/:id', (req, res) => {
 	actions.update(req.params.id, req.body)
-	.then((action) => {
-	  res.status(200).json(action)
-	})
-	.catch((error) => {
-	  next(error)
-	})
+		.then((action) => {
+		res.status(200).json(action)
+		})
+		.catch((error) => {
+		next(error)
+		})
   });
+
+
+//////////////// DELETE ////////////////
+
+router.delete('/:id', (req, res) => {
+	actions.remove(req.params.id)
+		.then((count) => {
+			if (count > 0) {
+			res.status(200).json({
+				message: "The action you have selected has been deleted.",
+			})
+			} else {
+			res.status(404).json({
+				message: "The action you selected could not be found",
+			})
+			}
+		})
+		.catch((error) => {
+			next(error)
+		})
+})

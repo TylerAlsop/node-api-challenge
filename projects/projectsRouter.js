@@ -65,6 +65,18 @@ router.post('/', (req, res) => {
 		})
 });
 
+//////////////// POST an action to a project ////////////////
+
+router.post('/:id/actions', (req, res) => {
+	actions.insert({ ...req.body, project_id: req.params.id })
+		.then((post) => {
+			res.status(201).json(post)
+		})
+		.catch((error) => {
+			next(error)
+		})
+});
+
 
 //////////////// PUT ////////////////
 
