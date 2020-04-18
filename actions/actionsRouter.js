@@ -20,10 +20,18 @@ router.get('/', (req, res) => {
 		})
 });
 
-// //////////////// GET by ID ////////////////
-// router.get('/:id', (req, res) => {
-// 	res.status(200).json(req.action)
-// });
+//////////////// GET by ID ////////////////
+
+router.get('/:id', (req, res) => {
+	actions.get(req.params.id)
+		.then(action => {
+			res.status(200).json(action)
+		})
+		.catch((error) => {
+			next(error)
+		})
+
+});
 
 
 //////////////// POST ////////////////
