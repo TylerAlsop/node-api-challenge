@@ -65,17 +65,17 @@ router.post('/', (req, res) => {
 });
 
 
-// //////////////// PUT ////////////////
+//////////////// PUT ////////////////
 
-// router.put('/:id', validateProject(), validateProjectId(), (req, res) => {
-//   projects.update(req.params.id, req.body)
-//   .then((project) => {
-//     res.status(200).json(project)
-//   })
-//   .catch((error) => {
-//     next(error)
-//   })
-// });
+router.put('/:id', (req, res) => {
+  projects.update(req.params.id, req.body)
+  .then((project) => {
+    res.status(200).json(project)
+  })
+  .catch((error) => {
+    next(error)
+  })
+});
 
 // //////////////// DELETE ////////////////
 
